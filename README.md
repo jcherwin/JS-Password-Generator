@@ -8,7 +8,7 @@ This program utilizes different aspects of JavaScript such as: objects, function
 
 ## Link
 
-This is a link to the project hosted on GitHub Pages: [https://choosealicense.com/](https://choosealicense.com/)
+This is a link to the project hosted on GitHub Pages: [https://jcherwin.github.io/JS-Password-Generator/](https://jcherwin.github.io/JS-Password-Generator/)
 
 ## Usage
 
