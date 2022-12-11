@@ -9,14 +9,15 @@ function writePassword() {
   passwordText.value = password;
 }
 
+// Prompts the user for password criteria and then generates and returns a string based on that criteria
 function generatePassword() {
-  // Variable that holds text to send to displayPrompt function
+  // Text to send to displayPrompt function
   var promptText = "";
 
-  // Object that contains the different properties of the password that are being checked for
+  // Properties of the password that are being checked for
   var pword = {
     length: {
-      choice: false, // Stores y/n choice from prompt for custom length 
+      choice: false, // Y/n choice from prompt for custom length 
       value: 8, // Length of the password, default to 8
     },
     charType: {
@@ -38,10 +39,10 @@ function generatePassword() {
         value: " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~", //length=33
       },
     },    
-    text: "", // Stores the final text value of the password to be returned from this function
+    text: "", // Text value of the password to be returned from this function
   };
 
-  // Prompts the user for password critera
+  // Prompts the user for password critera and stores the choices to pword object as booleans
   promptText = "Do you want to set a custom password length?"
   +"\n\nCancel: 8 characters (default)";
   pword.length.choice = displayPrompt(promptText,true);
@@ -50,7 +51,7 @@ function generatePassword() {
   +"\n\nCancel: All lowercase (default)";
   pword.charType.choice = displayPrompt(promptText,true);
 
-  // IF the user chose to set a password lenth, THEN they are prompted to enter it 
+  // IF the user chose to set a password length, THEN they are prompted to enter it 
   if(pword.length.choice){
     promptText = "How long do you want your password to be? (8-128 characters)";
 
@@ -59,7 +60,7 @@ function generatePassword() {
     while(validateLength){
       pword.length.value = displayPrompt(promptText,false);
 
-      // Only exits the loop if the user enters a number between 8 & 128, inclusive
+      // Only exits the loop IF the user enters a number between 8 & 128, inclusive
       if(pword.length.value >= 8 && pword.length.value <= 128){
         validateLength = false;
       }else{
@@ -88,7 +89,7 @@ function generatePassword() {
       promptText = "Special Characters?"+"\n\n(Ok-Yes/Cancel-no)";
       pword.charType.schars.choice = displayPrompt(promptText,true);
 
-      //Only exits the loop if at least one character type has been selected
+      //Only exits the loop IF at least one character type has been selected
       if(pword.charType.lcase.choice || pword.charType.ucase.choice ||
         pword.charType.num.choice || pword.charType.schars.choice){
         validateChars = false;
@@ -101,7 +102,7 @@ function generatePassword() {
     }
   }
 
-  // Object that stores the pool of selected character types, and the selected chartype  
+  // Stores the pool of selected character types, and the selected chartype  
   var typeSet = {
     pool: [],
     selected: null,
